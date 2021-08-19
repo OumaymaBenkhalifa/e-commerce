@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {% endblock %}
+{% block body %}
+<div class="row" style="padding: 2pc; display: flex; align-items: center; justify-content: center;">
+    {% for article in articles %}
+        <div class="card col-md-4" style="width: 24rem;">
+            <img class="center" style="width: 15pc; height:15pc;display: block; padding:1pc; margin-left: auto; margin-right: auto; " src={{ article.image }} >
+            <div class="card-body">
+                <h5 class="card-title" style="text-align: center;">{{ article.title }}</h5>
+                <div class="boxed" style="text-align: justify; width:100% ; height: 10pc; padding: 2%;">{{ article.description }}</div>
+                <h1 style="color: red; font-size: x-large; text-align: center;"> {{ article.prix }} TND</h1>
+                <a href="#" class="btn btn-primary" style="float: right;">add to cart</a>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+
+
+
+{% endblock %}
