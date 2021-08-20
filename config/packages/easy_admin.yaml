@@ -1,14 +1,38 @@
 easy_admin:
-    entities:
-        # List the entity class name you want to manage
-        - App\Entity\Produit
-#        - App\Entity\Category
-#        - App\Entity\User
-    site_name: 'gestion de mon site'
+
+    site_name: 'Gestion de mon site'
+
     user:
         display_name: true
         display_avatar: true
+
     design:
         form_theme:
             - "@EasyAdmin/form/bootstrap_4.html.twig"
+
+        menu:
+            - {label: 'Produit' }
+            - {entity: 'Produit', label: 'Produits', icon: 'book'}
+
+    entities:
+        Produit:
+            class: App\Entity\Produit
+            list:
+                fields:
+                    - id
+                    - title
+                    - quantite
+                    - prix
+                    - description
+                    - { property: 'image', label: 'Image', type: 'image', base_path: '%app.path.image%' }
+                    - {property: 'Category', label: 'categories', type: 'array'}
+            form:
+                fields:
+                    - title
+                    - quantite
+                    - prix
+                    - description
+                    - {property: 'imageFile', type: 'vich_image', label: 'Image'}
+                    - {property: 'Category', label: 'categories', type: 'entity', type_options: { class: 'App\Entity\Category' , multiple: true, by_reference: false, attr: { data-widget: 'select2'}}}
+
 
